@@ -24,7 +24,10 @@
     <ClCompile Include="GameStrategy.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MinimaxStrategy.cpp">
+    <ClCompile Include="AlphaBeta.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Minimax.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +38,10 @@
     <ClInclude Include="GameStrategy.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MinimaxStrategy.h">
+    <ClInclude Include="AlphaBeta.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Minimax.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

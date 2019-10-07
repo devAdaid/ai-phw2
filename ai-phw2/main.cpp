@@ -1,26 +1,54 @@
 #include <iostream>
 #include "GameState.h"
-#include "MinimaxStrategy.h"
+#include "Minimax.h"
+#include "AlphaBeta.h"
 
 using namespace std;
 
 int main()
 {
 	GameState game = GameState();
-	int bestMove = -1;
+	pair<int, int> bestMove;
 	int currentPlayer = PLAYER_A;
 
-	MinimaxStrategy minimax = MinimaxStrategy();
+	Minimax minimax = Minimax();
+	AlphaBeta alphaBeta = AlphaBeta();
+
+	GameStrategy& strategy = alphaBeta;
+
+	game.print();
 
 	while (!game.isGameOver())
 	{
 		cout << "Current Turn: " << ((currentPlayer == PLAYER_A) ? "A" : "B") << endl;
-		bestMove = minimax.findBestPlace(game, currentPlayer);
-		game.move(bestMove, currentPlayer);
+		if (currentPlayer == PLAYER_A)
+		{
+			cout << "Waiting AI..." << endl;
+			bestMove = strategy.findBestPlace(game, currentPlayer);
+			game.move(bestMove, currentPlayer);
 
-		int x = bestMove / BOARD_SIZE;
-		int y = bestMove % BOARD_SIZE;
+			int x = bestMove.first;
+			int y = bestMove.second;
+			cout << "x: " << x << ", y: " << y << endl;
+		}
+		else
+		{
+			cout << "Input: ";
+			
+			int x, y;
+			cin >> x >> y;
+			game.move(make_pair(x, y), currentPlayer);
+		}
+		/*
+		cout << "Waiting AI..." << endl;
+		bestMove = strategy.findBestPlace(game, currentPlayer);
+		game.move(bestMove, currentPlayer);
+		int x = bestMove.first;
+		int y = bestMove.second;
 		cout << "x: " << x << ", y: " << y << endl;
+		*/
+
+		game.print();
 		currentPlayer = 3 - currentPlayer;
 	}
 
