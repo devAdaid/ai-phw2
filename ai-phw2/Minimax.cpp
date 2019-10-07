@@ -83,7 +83,7 @@ pair<int, pair<int, int>> Minimax::maxPlayer(GameState& game)
 
 		if (game.depth == 0)
 		{
-			cout << "." << endl;
+			//cout << "." << endl;
 		}
 	}
 

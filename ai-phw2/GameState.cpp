@@ -18,7 +18,6 @@ GameState::GameState(const GameState& other)
 	}
 	depth = other.depth;
 	winner = other.winner;
-	lastMove = other.lastMove;
 }
 
 GameState::~GameState()
@@ -83,7 +82,6 @@ void GameState::move(pair<int, int> movement, int player)
 	int y = movement.second;
 
 	board[x][y] = player;
-	lastMove = make_pair(x, y);
 	depth += 1;
 
 	// Check game over

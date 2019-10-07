@@ -2,54 +2,34 @@
 #include "GameState.h"
 #include "Minimax.h"
 #include "AlphaBeta.h"
+#include "GamePlayer.h"
 
 using namespace std;
 
 int main()
 {
 	GameState game = GameState();
-	pair<int, int> bestMove;
-	int currentPlayer = PLAYER_A;
 
 	Minimax minimax = Minimax();
 	AlphaBeta alphaBeta = AlphaBeta();
 
-	GameStrategy& strategy = alphaBeta;
+	GamePlayer playerA = GamePlayer(&alphaBeta, AI, PLAYER_A);
+	GamePlayer playerB = GamePlayer(&alphaBeta, AI, PLAYER_B);
+
+	GamePlayer* currentPlayer = &playerA;
 
 	game.print();
 
 	while (!game.isGameOver())
 	{
-		cout << "Current Turn: " << ((currentPlayer == PLAYER_A) ? "A" : "B") << endl;
-		if (currentPlayer == PLAYER_A)
-		{
-			cout << "Waiting AI..." << endl;
-			bestMove = strategy.findBestPlace(game, currentPlayer);
-			game.move(bestMove, currentPlayer);
-
-			int x = bestMove.first;
-			int y = bestMove.second;
-			cout << "x: " << x << ", y: " << y << endl;
-		}
-		else
-		{
-			cout << "Input: ";
-			
-			int x, y;
-			cin >> x >> y;
-			game.move(make_pair(x, y), currentPlayer);
-		}
-		/*
-		cout << "Waiting AI..." << endl;
-		bestMove = strategy.findBestPlace(game, currentPlayer);
-		game.move(bestMove, currentPlayer);
-		int x = bestMove.first;
-		int y = bestMove.second;
-		cout << "x: " << x << ", y: " << y << endl;
-		*/
+		cout << "Current Turn: " << ((currentPlayer->playerNum == PLAYER_A) ? "A" : "B") << endl;
+		
+		currentPlayer->onTurn(game);
 
 		game.print();
-		currentPlayer = 3 - currentPlayer;
+
+		if (currentPlayer == &playerA) currentPlayer = &playerB;
+		else currentPlayer = &playerA;
 	}
 
 	switch (game.winner)

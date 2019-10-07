@@ -1,6 +1,7 @@
 #include "AlphaBeta.h"
 #include <climits>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -58,6 +59,7 @@ pair<int, pair<int, int>> AlphaBeta::minPlayer(GameState& game, int alpha, int b
 			}
 		}
 		game.undo(move);
+
 	}
 
 	return make_pair(minProfit, bestMove);
@@ -78,7 +80,7 @@ pair<int, pair<int, int>> AlphaBeta::maxPlayer(GameState& game, int alpha, int b
 	// For all next moves
 	for (auto move : game.getPossibleMoves())
 	{
-		game.move(move, otherPlayer);
+		game.move(move, targetPlayer);
 		int profit = minPlayer(game, alpha, beta).first;
 		if (profit > maxProfit)
 		{

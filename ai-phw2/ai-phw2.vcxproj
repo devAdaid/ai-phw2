@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AlphaBeta.cpp" />
+    <ClCompile Include="GamePlayer.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStrategy.cpp" />
     <ClCompile Include="main.cpp" />
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlphaBeta.h" />
+    <ClInclude Include="GamePlayer.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStrategy.h" />
     <ClInclude Include="Minimax.h" />

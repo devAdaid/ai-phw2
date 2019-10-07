@@ -18,7 +18,6 @@ public:
 	int board[BOARD_SIZE][BOARD_SIZE] = { 0 };
 	int depth = 0;
 	int winner = EMPTY;
-	pair<int, int> lastMove = make_pair(-1, -1);
 	map<int, GameState> childs;
 
 	GameState();
