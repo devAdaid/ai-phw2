@@ -124,6 +124,8 @@
     <ClCompile Include="GameStrategy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Minimax.cpp" />
+    <ClCompile Include="MonteCarlo.cpp" />
+    <ClCompile Include="MonteCarloGameState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlphaBeta.h" />
@@ -131,6 +133,8 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStrategy.h" />
     <ClInclude Include="Minimax.h" />
+    <ClInclude Include="MonteCarlo.h" />
+    <ClInclude Include="MonteCarloGameState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
